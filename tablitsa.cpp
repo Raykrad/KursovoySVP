@@ -1,7 +1,6 @@
 #include "tablitsa.h"
 #include "./ui_tablitsa.h"
 #include "addpanel.h"
-#include "QFile"
 
 tablitsa::tablitsa(QWidget *parent)
     : QMainWindow(parent)
@@ -46,6 +45,9 @@ void tablitsa::on_addButton_triggered(){
         table->setItem(row, 5, itemWeight);
         saveToFile();
     }
+    else {
+        QMessageBox::warning(this, "Ошибка", "Проблема создания таблицы");
+    }
 }
 
 
@@ -55,6 +57,9 @@ void tablitsa::on_delButton_triggered(){
         int row = table->row(selectedItems.first());
         table->removeRow(row);
         saveToFile();
+    }
+    else {
+        QMessageBox::warning(this, "Ошибка", "Выберите пациента для удаления");
     }
 }
 
@@ -76,6 +81,9 @@ void tablitsa::saveToFile(){
         }
         file.close();
     }
+    else {
+        QMessageBox::warning(this, "Ошибка", "Файл базы данных не существует");
+    }
 }
 
 void tablitsa::loadFromFile(){
@@ -95,5 +103,8 @@ void tablitsa::loadFromFile(){
             }
         }
         file.close();
+    }
+    else {
+        QMessageBox::warning(this, "Ошибка", "Файл базы данных не существует");
     }
 }
