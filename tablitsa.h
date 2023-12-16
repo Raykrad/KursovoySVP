@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include "QFile"
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class tablitsa; }
