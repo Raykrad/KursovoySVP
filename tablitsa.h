@@ -21,6 +21,7 @@ public:
 private slots:
     void on_addButton_triggered();
     void on_delButton_triggered();
+    void on_editButton_triggered();
     void loadFromFile();
     void saveToFile();
 

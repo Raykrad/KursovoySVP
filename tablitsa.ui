@@ -27,6 +27,7 @@
    </attribute>
    <addaction name="addButton"/>
    <addaction name="delButton"/>
+   <addaction name="editButton"/>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -43,6 +44,7 @@
     </property>
     <addaction name="addButton"/>
     <addaction name="delButton"/>
+    <addaction name="editButton"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -62,6 +64,15 @@
    </property>
    <property name="text">
     <string>Удалить запись</string>
+   </property>
+  </action>
+  <action name="editButton">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/img/edit.png</normaloff>:/res/img/edit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Редактировать запись</string>
    </property>
   </action>
  </widget>

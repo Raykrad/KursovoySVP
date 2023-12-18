@@ -15,24 +15,54 @@ QString addPanel::getSurname() const {
     return surname;
 }
 
+void addPanel::setSurname(const QString &surname) {
+    this->surname = surname;
+    ui->surname->setText(surname);
+}
+
 QString addPanel::getName() const {
     return name;
+}
+
+void addPanel::setName(const QString &name) {
+    this->name = name;
+    ui->name->setText(name);
 }
 
 QString addPanel::getLastName() const {
     return lastName;
 }
 
+void addPanel::setLastName(const QString &lastName) {
+    this->lastName = lastName;
+    ui->lastName->setText(lastName);
+}
+
 QDate addPanel::getBirthDate() const {
     return birthDate;
+}
+
+void addPanel::setBirthDate(const QDate &birthDate) {
+    this->birthDate = birthDate;
+    ui->dateBirth->setDate(birthDate);
 }
 
 QString addPanel::getHeight() const {
     return height;
 }
 
+void addPanel::setHeight(const QString &height) {
+    this->height = height;
+    ui->height->setValue(height.toInt());
+}
+
 QString addPanel::getWeight() const {
     return weight;
+}
+
+void addPanel::setWeight(const QString &weight) {
+    this->weight = weight;
+    ui->weight->setValue(weight.toInt());
 }
 
 addPanel::~addPanel()

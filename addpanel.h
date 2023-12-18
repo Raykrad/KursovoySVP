@@ -21,10 +21,15 @@ public:
     QDate getBirthDate() const;
     QString getHeight() const;
     QString getWeight() const;
+    void setSurname(const QString &surname);
+    void setName(const QString &name);
+    void setLastName(const QString &lastName);
+    void setBirthDate(const QDate &birthDate);
+    void setHeight(const QString &height);
+    void setWeight(const QString &weight);
 
 private slots:
     void on_add_clicked();
-
     void on_exit_clicked();
 
 private:

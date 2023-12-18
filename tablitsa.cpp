@@ -63,6 +63,45 @@ void tablitsa::on_delButton_triggered(){
     }
 }
 
+void tablitsa::on_editButton_triggered()
+{
+    // Получить выбранную строку
+    QList<QTableWidgetItem*> selectedItems = table->selectedItems();
+    if (!selectedItems.isEmpty()) {
+        // Получить данные из выбранной строки
+        int row = table->row(selectedItems.first());
+        QString surname = table->item(row, 0)->text();
+        QString name = table->item(row, 1)->text();
+        QString lastName = table->item(row, 2)->text();
+        QDate birthDate = QDate::fromString(table->item(row, 3)->text());
+        QString height = table->item(row, 4)->text();
+        QString weight = table->item(row, 5)->text();
+
+        // Запустить анкету
+        addPanel panel;
+        panel.setSurname(surname);
+        panel.setName(name);
+        panel.setLastName(lastName);
+        panel.setBirthDate(birthDate);
+        panel.setHeight(height);
+        panel.setWeight(weight);
+
+        if (panel.exec() == QDialog::Accepted) {
+            // Обновить данные в таблице
+            table->item(row, 0)->setText(panel.getSurname());
+            table->item(row, 1)->setText(panel.getName());
+            table->item(row, 2)->setText(panel.getLastName());
+            table->item(row, 3)->setText(panel.getBirthDate().toString());
+            table->item(row, 4)->setText(panel.getHeight());
+            table->item(row, 5)->setText(panel.getWeight());
+            saveToFile();
+        }
+    } else {
+        // Не выбрана ни одна строка
+        QMessageBox::warning(this, "Ошибка", "Выберите пациента для редактирования");
+    }
+}
+
 void tablitsa::saveToFile(){
     QFile file("database.txt");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -108,3 +147,6 @@ void tablitsa::loadFromFile(){
         QMessageBox::warning(this, "Ошибка", "Файл базы данных не существует");
     }
 }
+
+
+
