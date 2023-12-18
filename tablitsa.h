@@ -27,7 +27,6 @@ private slots:
     void loadFromFile();
     void saveToFile();
     void on_actionGithub_triggered();
-
     void on_gorit_triggered();
 
 private:

@@ -65,13 +65,11 @@ void addPanel::setWeight(const QString &weight) {
     ui->weight->setValue(weight.toInt());
 }
 
-addPanel::~addPanel()
-{
+addPanel::~addPanel(){
     delete ui;
 }
 
-void addPanel::on_add_clicked()
-{
+void addPanel::on_add_clicked(){
     surname = ui->surname->text();
     name = ui->name->text();
     lastName = ui->lastName->text();
@@ -84,8 +82,7 @@ void addPanel::on_add_clicked()
 }
 
 
-void addPanel::on_exit_clicked()
-{
+void addPanel::on_exit_clicked(){
     reject();
 }
 

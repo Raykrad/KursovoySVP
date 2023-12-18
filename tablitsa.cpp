@@ -14,6 +14,7 @@ tablitsa::tablitsa(QWidget *parent)
     table->setHorizontalHeaderLabels(headers);
     setCentralWidget(table);
     loadFromFile();
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 tablitsa::~tablitsa(){
@@ -47,7 +48,6 @@ void tablitsa::on_addButton_triggered(){
     }
 }
 
-
 void tablitsa::on_delButton_triggered(){
     QList<QTableWidgetItem*> selectedItems = table->selectedItems();
     if (!selectedItems.isEmpty()) {
@@ -60,8 +60,7 @@ void tablitsa::on_delButton_triggered(){
     }
 }
 
-void tablitsa::on_editButton_triggered()
-{
+void tablitsa::on_editButton_triggered(){
     QList<QTableWidgetItem*> selectedItems = table->selectedItems();
     if (!selectedItems.isEmpty()) {
         int row = table->row(selectedItems.first());
@@ -78,7 +77,6 @@ void tablitsa::on_editButton_triggered()
         panel.setBirthDate(birthDate);
         panel.setHeight(height);
         panel.setWeight(weight);
-
         if (panel.exec() == QDialog::Accepted) {
             table->item(row, 0)->setText(panel.getSurname());
             table->item(row, 1)->setText(panel.getName());
@@ -139,21 +137,14 @@ void tablitsa::loadFromFile(){
     }
 }
 
-
-
-
-void tablitsa::on_actionGithub_triggered()
-{
+void tablitsa::on_actionGithub_triggered(){
     QDesktopServices::openUrl(QUrl("https://github.com/Raykrad/KursovoySVP"));
 }
 
-
-void tablitsa::on_gorit_triggered()
-{
+void tablitsa::on_gorit_triggered(){
     QString message = "Shift+Q - добавление пациента\n"
                       "Shift+W - удаление пациента\n"
                       "Shift+E - редактирование пациента";
 
     QMessageBox::information(this, "Горячие клавиши", message);
 }
-
