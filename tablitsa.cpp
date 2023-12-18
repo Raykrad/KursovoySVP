@@ -45,9 +45,6 @@ void tablitsa::on_addButton_triggered(){
         table->setItem(row, 5, itemWeight);
         saveToFile();
     }
-    else {
-        QMessageBox::warning(this, "Ошибка", "Проблема создания таблицы");
-    }
 }
 
 
@@ -65,10 +62,8 @@ void tablitsa::on_delButton_triggered(){
 
 void tablitsa::on_editButton_triggered()
 {
-    // Получить выбранную строку
     QList<QTableWidgetItem*> selectedItems = table->selectedItems();
     if (!selectedItems.isEmpty()) {
-        // Получить данные из выбранной строки
         int row = table->row(selectedItems.first());
         QString surname = table->item(row, 0)->text();
         QString name = table->item(row, 1)->text();
@@ -76,8 +71,6 @@ void tablitsa::on_editButton_triggered()
         QDate birthDate = QDate::fromString(table->item(row, 3)->text());
         QString height = table->item(row, 4)->text();
         QString weight = table->item(row, 5)->text();
-
-        // Запустить анкету
         addPanel panel;
         panel.setSurname(surname);
         panel.setName(name);
@@ -87,7 +80,6 @@ void tablitsa::on_editButton_triggered()
         panel.setWeight(weight);
 
         if (panel.exec() == QDialog::Accepted) {
-            // Обновить данные в таблице
             table->item(row, 0)->setText(panel.getSurname());
             table->item(row, 1)->setText(panel.getName());
             table->item(row, 2)->setText(panel.getLastName());
@@ -97,7 +89,6 @@ void tablitsa::on_editButton_triggered()
             saveToFile();
         }
     } else {
-        // Не выбрана ни одна строка
         QMessageBox::warning(this, "Ошибка", "Выберите пациента для редактирования");
     }
 }
@@ -149,4 +140,20 @@ void tablitsa::loadFromFile(){
 }
 
 
+
+
+void tablitsa::on_actionGithub_triggered()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/Raykrad/KursovoySVP"));
+}
+
+
+void tablitsa::on_gorit_triggered()
+{
+    QString message = "Shift+Q - добавление пациента\n"
+                      "Shift+W - удаление пациента\n"
+                      "Shift+E - редактирование пациента";
+
+    QMessageBox::information(this, "Горячие клавиши", message);
+}
 

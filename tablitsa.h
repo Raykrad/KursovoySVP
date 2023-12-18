@@ -5,6 +5,8 @@
 #include <QTableWidget>
 #include "QFile"
 #include <QMessageBox>
+#include <qdesktopservices.h>
+#include <QUrl>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class tablitsa; }
@@ -24,6 +26,9 @@ private slots:
     void on_editButton_triggered();
     void loadFromFile();
     void saveToFile();
+    void on_actionGithub_triggered();
+
+    void on_gorit_triggered();
 
 private:
     Ui::tablitsa *ui;
